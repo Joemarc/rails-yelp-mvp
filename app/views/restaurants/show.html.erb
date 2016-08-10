@@ -1,17 +1,13 @@
 <div class= "text-center padded">
-  <h1><%= @restaurant.title %></h1>
-  <p><%= @restaurant.content %></p>
-  <ul>
-    <li class= "list-inline"><%= link_to "View all restaurants", restaurants_path, class: 'btn btn-primary' %></li>
-    <li class= "list-inline">
-      <%= link_to edit_restaurant_path(@restaurant) do %>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-      <% end %>
-    </li>
-    <li class= "list-inline">
-      <%= link_to restaurant_path(@restaurant), method: :delete do %>
-      <i class="fa fa-trash" aria-hidden="true"></i>
-      <%end%>
-    </li>
-  </ul>
+  <h1><%= @restaurant.name %></h1>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.category %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p class= "list-inline"><%= link_to "All restaurants", restaurants_path, class: 'btn btn-primary' %></p>
+  <h1>Reviews</h1>
+  <p class= "list-inline"><%= link_to "Create a review", new_restaurant_review_path(@restaurant), class: 'btn btn-primary' %></p>
+
+  <% @restaurant.reviews.each do |review| %>
+    <p><%= review.content %></p>
+  <% end %>
 </div>
